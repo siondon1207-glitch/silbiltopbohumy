@@ -1,23 +1,390 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "InsuranceProduct",
+      "name": "실비보험 특약 상세 분석 및 세대별 보장 가이드",
+      "description": "실손의료보험 3대 비급여 특약인 도수치료, 비급여 주사치료, MRI 등의 보장 구조와 2026년도 요율 인상 및 세대 전환 장단점을 다룹니다.",
+      "provider": {
+        "@type": "Organization",
+        "name": "실손의료보험 분석 연구소"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "KR"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "KRW"
+      }
+    }
+    </script>
+
+    <style>
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background: #f4f7f6; 
+            color: #2c3e50; 
+            line-height: 1.8; 
+        }
+        header, section, footer { 
+            max-width: 960px; 
+            margin: 25px auto; 
+            padding: 35px; 
+            background: #ffffff; 
+            border-radius: 16px; 
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); 
+        }
+        h1, h2, h3 { 
+            color: #1e3a8a; 
+            margin-bottom: 20px; 
+            font-weight: 700; 
+        }
+        h1 { 
+            font-size: 2.4rem; 
+            text-align: center; 
+            padding-bottom: 15px; 
+            border-bottom: 4px solid #3b82f6; 
+            letter-spacing: -0.05em; 
+        }
+        h2 { 
+            font-size: 1.8rem; 
+            border-bottom: 2px solid #e2e8f0; 
+            padding-bottom: 12px; 
+            margin-top: 40px; 
+        }
+        h3 { 
+            font-size: 1.35rem; 
+            color: #2563eb; 
+            border-left: 4px solid #2563eb; 
+            padding-left: 12px; 
+            margin-top: 30px; 
+        }
+        p, li, td, th, label, textarea { 
+            font-size: 1.05rem; 
+        }
+        ul, ol { 
+            padding-left: 20px; 
+            margin-bottom: 20px; 
+        }
+        li { 
+            margin-bottom: 10px; 
+        }
+        p { 
+            margin-bottom: 20px; 
+            text-align: justify; 
+        }
+        
+        .info-box { 
+            background: #eff6ff; 
+            border-left: 5px solid #3b82f6; 
+            padding: 20px; 
+            border-radius: 8px; 
+            margin: 25px 0; 
+        }
+        
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 30px 0; 
+            box-shadow: 0 2px 15px rgba(0,0,0,0.02); 
+        }
+        th, td { 
+            padding: 14px 18px; 
+            text-align: left; 
+            border-bottom: 1px solid #e2e8f0; 
+        }
+        th { 
+            background-color: #1e3a8a; 
+            color: #ffffff; 
+            font-weight: 600; 
+        }
+        tr:nth-child(even) { 
+            background-color: #f8fafc; 
+        }
+        tr:hover { 
+            background-color: #f1f5f9; 
+        }
+
+        a { 
+            color: #2563eb; 
+            text-decoration: none; 
+            transition: color 0.2s ease; 
+        }
+        a:hover { 
+            color: #1d4ed8; 
+            text-decoration: underline; 
+        }
+        
+        .btn-cta { 
+            display: block; 
+            margin: 35px auto; 
+            padding: 16px 40px; 
+            background: #2563eb; 
+            color: #ffffff; 
+            font-weight: 700; 
+            font-size: 1.15rem; 
+            border: none; 
+            border-radius: 30px; 
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3); 
+            transition: all 0.3s ease; 
+            cursor: pointer; 
+            text-decoration: none; 
+            text-align: center; 
+            max-width: 380px; 
+        }
+        .btn-cta:hover { 
+            background: #1d4ed8; 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4); 
+        }
+        
+        form { 
+            background: #f8fafc; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid #e2e8f0; 
+            margin-top: 30px; 
+        }
+        label { 
+            display: block; 
+            margin-bottom: 8px; 
+            font-weight: 600; 
+            color: #1e3a8a; 
+        }
+        input[type="text"], input[type="tel"], input[type="number"], select, textarea { 
+            width: 100%; 
+            padding: 12px; 
+            margin-bottom: 20px; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 6px; 
+            box-sizing: border-box; 
+            font-size: 1rem; 
+            color: #334155; 
+            background: #ffffff; 
+        }
+        input:focus, select:focus, textarea:focus { 
+            border-color: #3b82f6; 
+            outline: none; 
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); 
+        }
+        .form-group { 
+            margin-bottom: 20px; 
+        }
+        .required-text { 
+            color: #ef4444; 
+            font-size: 0.85rem; 
+            margin-left: 5px; 
+            font-weight: normal; 
+        }
+        
+        .external-links ul { 
+            list-style-type: none; 
+            padding-left: 0; 
+        }
+        .external-links ul li { 
+            margin-bottom: 12px; 
+            border-bottom: 1px solid #e2e8f0; 
+            padding-bottom: 8px; 
+        }
+
+        @media(max-width:768px) {
+            header, section, footer { 
+                margin: 15px; 
+                padding: 20px; 
+                border-radius: 12px; 
+            }
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.5rem; }
+            h3 { font-size: 1.2rem; }
+            .btn-cta { width: 100%; box-sizing: border-box; }
+            th, td { padding: 10px; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>실비보험 특약 분석 및 2026년 세대별 보장 가이드</h1>
+        <p>실손의료보험의 기본 구조에서 핵심 역할을 담당하는 비급여 특약의 상세 구성 요소를 살펴봅니다. 2026년에 적용되는 최신 의료 환경 기준과 건강보험 정책 변화에 맞춤화된 합리적인 특약 구성 방안 및 예상 납입 금액 관리 노하우를 전달해 드립니다.</p>
+        <a class="btn-cta" href="#consulting-form">내 조건에 맞는 실비보험 특약 진단받기</a>
+    </header>
+
+    <section>
+        <h2>실비보험 특약 개요 및 핵심 개념 분석</h2>
+        <p>대한민국 국민의 대다수가 가입하여 제2의 건강보험이라 불리는 실손의료보험은 병의원 및 약국에서 실제 지출한 의료비의 일정 비율을 보상하는 구조를 지닙니다. 그러나 실손보장을 면밀히 들여다보면 급여 영역과 비급여 영역으로 명확히 구분되며, 이 중에서도 납입 요금의 인상과 자기부담금 산정에 결정적인 영향을 주는 요인이 바로 실비보험 특약 구성입니다. 실손의료보험을 체계적으로 이해하기 위해서는 기본 보장 외에 별도로 선택하고 구성하는 각 계약의 특성을 정확히 파악해야 합니다.</p>
+        
+        <p>일반적으로 소비자들이 실비보험 특약 가입을 고려할 때 직면하는 평균 납입 금액은 연령과 건강 상태, 가입 시기에 따라 천차만별입니다. 가입자 본인이 매월 부담해야 하는 보험 가격은 얼마 정도인지, 향후 갱신 과정에서 예상되는 보험료 변동폭은 어느 정도인지에 대한 분석은 필수적입니다. 또한, 외래 진료 및 수술로 청구되는 실손 보상금의 구체적인 금액과 각 브랜드별 가격 편차를 종합적으로 이해하는 과정이 동반되어야 최적의 금융 설계를 완성할 수 있습니다.</p>
+
+        <div class="info-box">
+            <h3>비급여 특약의 개념과 중요성</h3>
+            <p>국민건강보험에서 재정적 보장을 제공하지 않는 비급여 진료 항목은 전액 환자 본인이 치료비를 직접 감당해야 하므로 가계 경제에 심각한 부담으로 작용합니다. 실비보험 특약은 이러한 도수치료, 비급여 주사치료, 자기공명영상인 MRI와 MRA 촬영 같은 고액 비급여 항목의 의료비를 집중 보장함으로써 실질적인 경제적 방어막 역할을 제공합니다. 특약에 가입하지 않은 채 기본 계약만 유지할 경우, 건강보험 급여 항목만 보상받게 되어 수만 원에서 수백만 원에 달하는 고가의 비급여 비용 지출 시 보상 공백이 심각하게 발생할 수 있습니다.</p>
+        </div>
+
+        <p>이를 비교하고 대안을 모색하고자 하는 금융 소비자들은 네이버, 구글, 유튜브 등 대형 포털 사이트와 동영상 채널을 활용해 다양한 정보를 탐색하고 있습니다. 더불어 트위터, 인스타그램, 페이스북 같은 소셜 미디어 플랫폼이나 카카오톡, 텔레그램 메신저 정보를 통해 가입법을 확인하기도 합니다. 최근에는 토스 같은 핀테크 앱이나 금융 플랫폼 어플 기능에서 제공하는 내 보험 찾아보기 서비스를 경험한 소비자들이 늘어나고 있으며, 제미나이 혹은 챗지피티 같은 최신 AI 도구를 접목하여 복잡한 세대별 약관 차이점과 상세 설계 규칙을 자문받는 혁신적인 정보 탐색 방식이 주목받고 있습니다.</p>
+    </section>
+
+    <section>
+        <h2>4세대 실손의료보험 특약의 주요 종류 및 보장 내용</h2>
+        <p>현재 시장에서 신규로 가입할 수 있는 4세대 실손의료보험의 핵심 구조는 급여와 비급여의 분리입니다. 과거 3세대 상품까지는 기본 계약과 일부 특약이 혼재되어 있었으나, 4세대 실손보험부터는 치료 성격이 명확한 비급여 진료들을 별도의 특별약관으로 분류하여 철저하게 관리하고 있습니다. 가입 희망자가 선택할 수 있는 대표적인 3대 비급여 특약 종류와 구체적인 보장 내역을 세밀하게 정리해 드립니다.</p>
+
+        <h3>1. 도수치료, 체외충격파치료, 증식치료 특약</h3>
+        <p>근골격계 질환으로 인해 정형외과나 재활의학과 등에서 자주 시행되는 도수치료와 충격파 요법은 현대 직장인들이 가장 많이 이용하는 비급여 진료입니다. 본 특별약관을 구성할 경우 연간 보상 한도 금액은 최고 350만 원 내외로 설정되며, 통원 횟수는 최대 50회까지 보장받을 수 있습니다. 다만, 치료의 목적이 단순한 피로 해소나 체형 교정이 아닌 치료의 객관적 필요성이 인정되는 질병 치료 요건을 충족해야 온전한 지급 대상이 됩니다.</p>
+
+        <h3>2. 비급여 주사료 특약</h3>
+        <p>몸살, 영양결핍, 면역력 저하 등으로 처방되는 비급여 영양제 주사, 마늘주사, 신데렐라주사, 백옥주사 및 항암 보조 목적의 비급여 주사제 등이 이 특약의 적용 범위에 포함됩니다. 연간 최대 보상 한도는 약 250만 원으로 설정되며 통원 치료 횟수는 50회 한도로 관리됩니다. 최근에는 치료 목적의 소명 절차가 점차 까다로워지고 있어 식약처 허가 기준에 따른 의사의 소견서 첨부가 중요 요건으로 대두되고 있습니다.</p>
+
+        <h3>3. 비급여 자기공명영상인 MRI 및 MRA 특약</h3>
+        <p>뇌 질환이나 척추, 관절 부위의 정밀 진단을 위해 진행되는 고가의 MRI와 MRA 촬영 비용을 보전하는 특별약관입니다. 검사 1회당 비용이 수십만 원을 호가하기 때문에 실손 가입자들 사이에서 보장 체감도가 제일 높은 필수 특약으로 추천됩니다. 연간 보상 한도 금액은 약 300만 원 선으로 설정되어 횟수 제한 없이 입통원 여부와 무관하게 설계가 적용됩니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>특약 구분</th>
+                    <th>연간 보상 한도</th>
+                    <th>최대 보장 횟수</th>
+                    <th>가입자 자기부담 비율</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>도수, 체외충격파, 증식치료</td>
+                    <td>연간 350만 원</td>
+                    <td>최대 50회</td>
+                    <td>30% 및 3만 원 중 큰 금액</td>
+                </tr>
+                <tr>
+                    <td>비급여 주사료</td>
+                    <td>연간 250만 원</td>
+                    <td>최대 50회</td>
+                    <td>30% 및 3만 원 중 큰 금액</td>
+                </tr>
+                <tr>
+                    <td>비급여 MRI / MRA</td>
+                    <td>연간 300만 원</td>
+                    <td>한도 내 제한 없음</td>
+                    <td>30% 및 3만 원 중 큰 금액</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>2026년 실비보험 제도 개편 및 요율 변동 전망</h2>
+        <p>2026년도에 접어들며 실손의료보험 제도는 장기적인 적자 구조 탈피와 가입자 간의 형평성 확립을 위해 대대적인 통계 관리 및 요율 최적화 과정을 거치고 있습니다. 특히 4세대 실손전환 제도가 정착된 이후, 비급여 사용량에 따라 매년 납입 요금이 유동적으로 증감하는 비급여 차등 요금제 체계가 한층 더 세밀하게 고도화되었습니다. 이는 평소 비급여 특약의 혜택을 이용하지 않는 가입자에게 확실한 요금 할인 혜택을 제공하고, 무분별하게 비급여 특약을 과다 이용하는 일부 가입자에게는 강한 페널티 요율을 가하여 손해율 안정화를 도모하는 정책적 조치입니다.</p>
+
+        <p>개인별로 산출되는 구체적인 예상 납입 요율은 본인의 직전 연도 비급여 보험금 수령액 규모에 따라 결정됩니다. 이러한 실시간 할인 및 할증 여부는 연간 사용 내역을 토대로 전용 스마트폰 앱이나 보험사 홈페이지를 통해 개인이 스스로 요금제 추이를 계산해 볼 수 있습니다. 만약 가입 후 지난 2년간 한 번도 비급여 보험금을 청구하지 않았다면 기본 요금의 10% 수준에 달하는 무사고 할인 혜택이 적용되어 최저가에 가까운 저렴한 금액으로 계약 유지가 가능해집니다.</p>
+
+        <p>대형 보험 브랜드 기업들은 손해율 분석을 담당하는 전문 인력과 정교한 통계 계산 시스템을 동원하여 가입자의 잠재 위험 등급을 산출하고 있습니다. 이로 인해 동일한 치료라 할지라도 개별 회사별로 부과되는 가입 위험률 등급과 손해율 데이터에 미세한 차이점이 발생할 수 있습니다. 따라서 소비자는 단 한 곳의 견적서만 받아볼 것이 아니라, 신뢰도 높은 온라인 공식 공시 채널이나 다이렉트 자가 진단 사이트를 비교하여 가장 합리적인 가입 요건을 지닌 브랜드를 파악하려는 노력을 꾸준히 병행해야 합니다.</p>
+    </section>
+
+    <section>
+        <h2>구세대 실손보험 전환 vs 유지 장단점 분석</h2>
+        <p>현재 1세대, 2세대, 3세대 구형 실손의료보험을 장기간 유지 중인 많은 소비자들은 매년 급격하게 다가오는 갱신 인상률 통지서를 보며 이를 신규 4세대 실손보험으로 갈아타야 할지, 아니면 무리를 해서라도 기존 상품을 유지하는 것이 나을지에 대해 깊은 고민을 안고 있습니다. 이를 현명하게 판단하기 위해서는 세대별 상품 구조의 명확한 차이점과 본인의 장기적인 건강 지표를 객관적으로 저울질해보는 컨설팅 관점의 분석이 선행되어야 합니다.</p>
+
+        <p>과거 구세대 실비보험의 최대 장점은 무엇보다 자기부담금이 전혀 없거나 10%에서 20% 미만으로 매우 낮아, 병원을 자주 가더라도 실제 환자가 직접 부담하는 지출 비용이 지극히 미미했다는 점입니다. 심지어 도수치료나 비급여 주사치료의 연간 횟수와 금액 한도가 현재처럼 정해져 있지 않고 훨씬 폭넓게 보장되어 실사용자들에게 압도적인 이점을 주었습니다. 그러나 이러한 장점 이면에는 동일 연령대 가입자들의 손해율 누적으로 인해 갱신 주기가 도래할 때마다 매월 납부 요금이 폭발적으로 치솟는 구조적 단점이 상존합니다. 노후기에 접어들면 매월 감당하기 어려운 고액의 보험료 청구서를 마주할 가능성이 매우 큽니다.</p>
+
+        <p>반면, 현재 시점의 신규 가입 전용인 4세대 실비보험은 기본 계약과 비급여 특약의 자기부담 비율이 30% 수준으로 상향되어 단기 통원 시 본인 분담금이 다소 크게 느껴질 수 있습니다. 하지만 가입 시점의 매월 부과되는 시작 납부 가격이 구세대 대비 절반 이하로 저렴하다는 강력한 초기 비용 세이브 장점을 보유하고 있습니다. 본인의 연간 비급여 치료 빈도가 지극히 적고 주기적인 약물 복용이나 장기 입원 가능성이 낮은 건강한 유형에 해당한다면, 구형 계약을 조속히 정리하고 4세대 다이렉트 최저가 요금 체계로 전환하여 절약된 여유 자금을 다른 노후 보장성 상품에 재투자하는 방향이 경제적으로 훨씬 합리적인 전략이 될 것입니다.</p>
+    </section>
+
+    <section>
+        <h2>주요 온라인 커뮤니티 실사용자의 내돈내산 생생한 후기</h2>
+        <p>현명한 소비자들은 복잡한 약관과 설명서의 획일적인 문구에만 의존하기보다 실제 병의원을 직접 방문하여 진료를 받고 보험금을 수령해 본 일반 직장인이나 주부들의 생생한 내돈내산 청구 후기 정보를 다각도로 검증하고 있습니다. 정보 교류가 가장 활발한 대표적인 커뮤니티 공간들의 실시간 여론 흐름을 가감 없이 전해 드립니다.</p>
+
+        <p>디시인사이드 보험갤러리 유저들의 의견을 살펴보면, 비교적 나이가 젊고 만성 질환이 없는 상태라면 구세대 유지보다 4세대로의 다이렉트 가입이 합리적이라는 시각이 우세합니다. 굳이 불필요한 사업비가 추가되는 유선 영업이나 대면 계약을 거치지 않고, 다이렉트 최저가 싼곳을 직접 검색하여 가입하는법이 스마트한 소비라는 의견이 자주 개진됩니다. 보배드림 자동차 및 금융 포럼 공간에서는 본인의 척추나 관절 통증으로 도수치료 청구가 잦아 자칫 비급여 요율이 할증될까 봐 전전긍긍하는 장기 통원 이용자들의 구체적인 한도 계산 팁들이 활발하게 공유되고 있습니다.</p>
+
+        <p>에펨코리아 및 펨코 커뮤니티 자유게시판의 글들을 검색해 보아도 실손 보장 요율 조절에 관련된 다양한 분석 지식과 리모델링 결과물에 대한 열띤 비교 논쟁이 빈번히 발생합니다. 특히 가입 단계에서 일부 영업 채널이 미끼성 혜택으로 제안하는 불법적인 사은품 제공이나 고액의 현금지원 및 상품권 제공 광고에 넘어가 잘못된 가입을 유도당하기보다, 정당한 보장 구성과 혜택을 지닌 신뢰할 수 있는 전문 업체의 투명한 정석 상담 좌표를 잘 알아보고 가입 절차를 진행해야 중도 해지나 민원 발생의 무리수 없이 오랫동안 건강한 의료 보장을 누릴 수 있다는 조언이 지지를 얻고 있습니다.</p>
+    </section>
+
+    <section>
+        <h2>다양한 플랫폼과 기술을 활용한 스마트한 실비 정보 탐색</h2>
+        <p>최근에는 인터넷 기술의 비약적인 발달과 인공지능 기반 디지털 자가 분석 트렌드가 확산됨에 따라, 가입 희망자가 스스로 능동적인 정보 수집 활동을 수행하고 있습니다. 대형 보험 회사들이 경쟁적으로 내놓는 다양한 상품 정보를 스마트하게 추려내어 가성비가 높은 제일 합리적인 계약 방안을 찾아내는 디지털 노하우가 갈수록 중요해지고 있습니다.</p>
+
+        <p>과거에는 설계사의 일방적인 제안서나 지인의 추천에만 의존하던 경향이 짙었으나, 현재의 가입 희망자들은 구글 통합 검색창을 통해 최신 의료 통계 자료와 가이드 문서를 면밀히 스크리닝하고 있습니다. 또한, 유튜브 금융 전문 채널에서 활동하는 언론 및 손해사정사 출신 크리에이터들의 약관 심층 해석 해설 영상을 반복하여 시청하며 올바른 권리 주장 요령을 학습하기도 합니다. 트위터나 인스타그램 등의 카드뉴스 이미지 정보를 바탕으로 핵심적인 보장 조항을 빠르고 직관적으로 흡수하는 젊은 층도 급속히 증가하는 양상입니다.</p>
+
+        <p>또한, 혁신적인 금융 종합 분석 도구로 발돋움한 토스 어플 내의 진단 도구를 구동하여 자신이 현재 매달 내고 있는 보험 계약 현황을 즉각 조회한 다음, 중복 가입 항목이나 불필요한 과다 비급여 특약이 들어가 있는지 자율 점검을 수행하는 소비 트렌드가 보편화되었습니다. 여기에 고차원적인 처리가 가능한 제미나이 또는 챗지피티 모델 등의 대화형 AI 어시스턴트 플랫폼에 본인의 복잡한 특약 약관 이미지나 세부 견적서를 파일로 첨부한 후 요약 및 모순점 지적을 요구하는 등의 지능적인 보장 분석 솔루션을 활용하면, 숨어 있던 보상 사각지대를 찾아내거나 불리한 요소를 바로잡아 실질적인 자산 세이브 효과를 풍부하게 만끽할 수 있습니다.</p>
+    </section>
+
+    <section id="consulting-form">
+        <h2>1:1 맞춤형 실비보험 특약 컨설팅 신청서</h2>
+        <p>복잡하게 뒤엉켜 있는 실손의료보험 가입 세대와 특약 항목들의 장단점을 정확하게 구분하기 어렵다면 본 진단 신청 폼을 상세하게 채워 주시기 바랍니다. 수집된 기초 데이터를 기반으로 전문적이고 투명한 분석 자료를 준비하여 가입자 본인과 가족에게 가장 어울리는 실질적인 맞춤형 리모델링 리포트를 전달해 드립니다. 입력 항목이 자세할수록 진단 데이터의 정밀도가 더욱 향상됩니다.</p>
+        
+        <form action="#" method="POST" onsubmit="alert('소중한 상담 요청 정보가 성공적으로 접수되었습니다. 담당 전문가가 신속하게 연락드리겠습니다.'); return false;">
+            <div class="form-group">
+                <label for="user-name">가입 신청 희망자 성함 <span class="required-text">(필수 입력)</span></label>
+                <input type="text" id="user-name" name="user_name" required placeholder="홍길동" />
+            </div>
+
+            <div class="form-group">
+                <label for="user-phone">상담 안내 수신용 연락처 <span class="required-text">(필수 입력)</span></label>
+                <input type="tel" id="user-phone" name="user_phone" required placeholder="010-1234-5678" pattern="[0-9]{3}-[0-9]{3,4}-[0-9]{4}" />
+            </div>
+            
+            <div class="form-group">
+                <label for="current-generation">현재 가입 중인 실손보험 세대 구분 <span class="required-text">(필수 입력)</span></label>
+                <select id="current-generation" name="current_generation" required>
+                    <option value="">세대 및 종류를 선택해 주세요</option>
+                    <option value="gen1">1세대 실손보험 (2009년 9월 이전 가입)</option>
+                    <option value="gen2">2세대 실손보험 (2009년 10월 ~ 2017년 3월 가입)</option>
+                    <option value="gen3">3세대 실손보험 (2017년 4월 ~ 2021년 6월 가입)</option>
+                    <option value="gen4">4세대 실손보험 (2021년 7월 이후 가입)</option>
+                    <option value="unknown">기억이 잘 안 나거나 보장 확인이 필요한 상태</option>
+                    <option value="none">아직 미가입 상태이며 신규 가입을 고려 중</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="user-age">상담 대상자 현재 정확한 만나이 <span class="required-text">(필수 입력)</span></label>
+                <input type="number" id="user-age" name="user_age" required min="0" max="110" placeholder="예: 35" />
+            </div>
+
+            <div class="form-group">
+                <label>관심 있는 비급여 특약 항목 (중복 체크 가능)</label>
+                <div style="display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 10px; background: #ffffff; padding: 15px; border-radius: 8px; border: 1px solid #cbd5e1;">
+                    <label style="font-weight: normal; color: #334155;"><input type="checkbox" name="interest_specialty" value="manual_therapy" style="margin-right: 10px;" />도수치료, 체외충격파, 증식치료 특약 보장 강화</label>
+                    <label style="font-weight: normal; color: #334155;"><input type="checkbox" name="interest_specialty" value="injection" style="margin-right: 10px;" />비급여 주사료 특약 보장 및 수액 치료 목적 확인</label>
+                    <label style="font-weight: normal; color: #334155;"><input type="checkbox" name="interest_specialty" value="mri" style="margin-right: 10px;" />비급여 MRI, MRA 촬영 정밀 진단 보장 추가</label>
+                    <label style="font-weight: normal; color: #334155;"><input type="checkbox" name="interest_specialty" value="all_compare" style="margin-right: 10px;" />메이저 브랜드별 비급여 요금 비교 및 순위 추천 상담</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="monthly-budget">희망하는 적정 월 납입 요금대 범위</label>
+                <select id="monthly-budget" name="monthly_budget">
+                    <option value="under_10k">1만 원 미만의 실속형 설계</option>
+                    <option value="10k_to_20k">1만 원 이상 ~ 2만 원 수준의 표준 실손</option>
+                    <option value="over_20k">2만 원 이상의 든든한 종합형 연계 구성</option>
+                    <option value="free">금액에 상관없이 보장 범위가 제일 넓은 최상의 특약 구성</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="user-message">상세 건강 이력 및 추가 요청사항 (기저질환, 잦은 병원 이용 진료과 등)</label>
+                <textarea id="user-message" name="user_message" rows="5" placeholder="예: 5년 전 위염 약 처방 이력이 있습니다. 도수치료를 평소 자주 받는 편이라 할증 여부와 본인 부담 공제 금액을 간편하게 계산해 보고 최적의 추천 상품을 제안받고 싶습니다."></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">맞춤형 정밀 비교 견적 리포트 신청하기</button>
+        </form>
+        
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #64748b; text-align: center;">개인정보보호 관련 법률에 의거하여 기재해 주신 정보는 동의 없이 다른 상업적 목적으로 활용되거나 유출되지 않으며 오직 1대1 심층 상담 전화를 통한 견적 분석 업무 용도로만 정직하게 사용됩니다.</p>
+    </section>
+
+    <section>
+        <h2>공신력 있는 외부 공식 참고 자료</h2>
+        <p>실손의료보험 가입 요령 및 특약 분담 비율과 관련된 법적 분쟁, 정부 지침 등은 오차가 없도록 정부 공인 기관 및 신뢰도가 탄탄하게 검증된 공식 사이트를 거쳐 꼼꼼하게 교차 확인하시는 과정을 권해 드립니다.</p>
+        
+        <div class="external-links">
+            <ul>
+                <li><a href="https://silbiltopbohumz.directreliable.com" target="_blank" rel="nofollow noopener">다이렉트 실비보험 비교 종합 정보 포털</a>: 전국에 흩어진 주요 상품들의 갱신율 데이터를 비롯해 연령별 예상 단가와 최적의 절약 플랜을 입체적으로 가늠할 수 있도록 풍성한 기준 데이터를 제공합니다.</li>
+                <li><a href="https://www.fss.or.kr" target="_blank" rel="nofollow noopener">금융감독원 공식 통합 포털 파인</a>: 국내 모든 금융 거래 상품들의 인가 현황 및 약관 위반 시의 분쟁 해결 조정 가이드를 한눈에 모니터링할 수 있는 정부 최고 권위의 공시 사이트입니다.</li>
+                <li><a href="https://www.law.go.kr" target="_blank" rel="nofollow noopener">국가법령정보센터 자동차손해배상 및 실손 의료보험 표준 약관</a>: 보험업법 시행령 및 금융위원회 표준화 실손의료 규정 조항의 최신 개정본을 가공 없이 정직하고 날카롭게 확인할 수 있는 법률 백과사전입니다.</li>
+                <li><a href="https://namu.wiki/w/%EC%8B%A4%EC%86%90%EC%91%98%EB%A3%8C%EB%B3%B4%ED%97%98" target="_blank" rel="nofollow noopener">나무위키 실손의료보험 상세 기술 백서</a>: 오랜 기간 누적된 실비보험 변천사와 역대 보장 범위 축소 과정 및 소비자 집단 소송 역사를 체계적으로 학습할 수 있는 위키 백과사전입니다.</li>
+            </ul>
+        </div>
+    </section>
+
+  
